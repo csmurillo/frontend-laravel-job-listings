@@ -30,21 +30,21 @@
             </div>
         </div>
         <div class="flex flex-wrap gap-3 pt-4 items-center lg:pt-0 lg:w-auto w-[75%]">
-            <a href="/?tags={{$job["role"]}}">
+            <button onclick="addFilterItem('{{ $job['role'] }}')">
                 <span class="cursor-pointer py-1 px-2 bg-lightGrayCyanBg text-desDarkCyan font-leagueSpartan font-bold rounded-lg text-sm hover:bg-desDarkCyan hover:text-white">{{$job["role"]}}</span>
-            </a>
-            <a href="/?tags={{$job["level"]}}"> 
+            </button>
+            <button onclick="addFilterItem('{{ $job['level'] }}')"> 
                 <span class="cursor-pointer	py-1 px-2 bg-lightGrayCyanBg text-desDarkCyan font-leagueSpartan font-bold rounded-lg text-sm hover:bg-desDarkCyan hover:text-white">{{$job["level"]}}</span>
-            </a>
+            </button>
             @foreach($job["tools"] as $tool)
-                <a href="/?tags={{$tool}}">    
+                <button onclick="addFilterItem('{{ $tool }}')">    
                     <span class="cursor-pointer	py-1 px-2 bg-lightGrayCyanBg text-desDarkCyan font-leagueSpartan font-bold rounded-lg text-sm hover:bg-desDarkCyan hover:text-white">{{$tool}}</span>
-                </a>
+                </button>
             @endforeach
             @foreach($job["languages"] as $language)
-                <a href="/?tags={{$language}}">
+                <button onclick="addFilterItem('{{ $language }}')">
                     <span class="cursor-pointer	py-1 px-2 bg-lightGrayCyanBg text-desDarkCyan font-leagueSpartan font-bold rounded-lg text-sm hover:bg-desDarkCyan hover:text-white">{{$language}}</span>
-                </a>
+                </button>
             @endforeach
         </div>
     </div>
