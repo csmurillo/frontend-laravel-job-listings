@@ -1,5 +1,5 @@
 export const getJobs = (params="")=>{
-    return fetch('http://localhost:8000/jobs'+params,{
+    return fetch('http://localhost:8000/api/jobs'+params,{
         method:"GET",
         headers:{
             Accept:'application/json',
@@ -9,3 +9,6 @@ export const getJobs = (params="")=>{
     .then(res=>{return res.json()})
     .catch(err=>{console.log(err);})
 };
+
+
+

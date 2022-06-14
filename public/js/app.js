@@ -5370,7 +5370,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 var getJobs = function getJobs() {
   var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-  return fetch('http://localhost:8000/jobs' + params, {
+  return fetch('http://localhost:8000/api/jobs' + params, {
     method: "GET",
     headers: {
       Accept: 'application/json',
@@ -5403,8 +5403,6 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-
-__webpack_require__(/*! ./components/Example */ "./resources/js/components/Example.js");
 
 __webpack_require__(/*! ./components/Home */ "./resources/js/components/Home.js");
 
@@ -5474,11 +5472,8 @@ __webpack_require__.r(__webpack_exports__);
 function Card(_ref) {
   var job = _ref.job,
       addFilterItem = _ref.addFilterItem;
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    console.log(job); // alert(job);
-  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    className: "relative px-4 pt-7 pb-4 border mb-8 bg-white rounded lg:flex lg:flex-row" + (job.featured ? ' border-0 border-l-4 border-desDarkCyan' : ''),
+    className: "relative px-4 pt-7 pb-4 mb-8 bg-white rounded lg:flex lg:flex-row shadow-xl" + (job.featured ? ' border-0 border-l-4 border-desDarkCyan' : ''),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       "class": "absolute left-5 -top-5 lg:relative lg:left-0 lg:top-0 lg:flex lg:justify-center lg:items-center lg:mr-5",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
@@ -5573,55 +5568,6 @@ function Card(_ref) {
 
 if (document.getElementById('card')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Card, {}), document.getElementById('card'));
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/Example.js":
-/*!********************************************!*\
-  !*** ./resources/js/components/Example.js ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-function Example() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-    className: "container",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-      className: "row justify-content-center",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-        className: "col-md-8",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-          className: "card",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-            className: "card-header",
-            children: "Example Component"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-            className: "card-body",
-            children: "I'm an example component!"
-          })]
-        })
-      })
-    })
-  });
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Example);
-
-if (document.getElementById('example')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Example, {}), document.getElementById('example'));
 }
 
 /***/ }),
@@ -5774,14 +5720,13 @@ function Home() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     (0,_adapters_jobsApi__WEBPACK_IMPORTED_MODULE_5__.getJobs)().then(function (jobs) {
-      setJobs(jobs.jobs);
+      setJobs(jobs);
     });
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var query = "?jobs=" + jobs.join(", ").toString();
-    alert(jobs.join(", ").toString());
+    var query = "?filters=" + filterLabels.join(",").toString();
     (0,_adapters_jobsApi__WEBPACK_IMPORTED_MODULE_5__.getJobs)(query).then(function (jobs) {
-      setJobs(jobs.jobs);
+      setJobs(jobs);
     });
   }, [filterLabels]);
 
@@ -5795,8 +5740,7 @@ function Home() {
   var addFilterItem = function addFilterItem(item) {
     filterLabels.push(item);
     var addedFilterLabels = Array.from(new Set(filterLabels));
-    setFilterLabels(addedFilterLabels); // console.log('Added Filter Labels:');
-    // console.log(addedFilterLabels);
+    setFilterLabels(addedFilterLabels);
   };
 
   var clearFilter = function clearFilter() {
@@ -5804,7 +5748,7 @@ function Home() {
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {}), filterLabels.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "relative px-5 w-full -mt-10",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Filters__WEBPACK_IMPORTED_MODULE_4__["default"], {
         filterLabels: filterLabels,
@@ -28067,6 +28011,19 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
   // Check for `exports` after `define` in case a build optimizer adds it.
   else {}
 }.call(this));
+
+
+/***/ }),
+
+/***/ "./resources/sass/app.scss":
+/*!*********************************!*\
+  !*** ./resources/sass/app.scss ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
 
 
 /***/ }),
@@ -59520,6 +59477,7 @@ if (false) {} else {
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
 /******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/sass/app.scss")))
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/css/app.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	

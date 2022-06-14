@@ -13,16 +13,15 @@ function Home() {
     useEffect(()=>{
         getJobs()
             .then(jobs=>{
-                setJobs(jobs.jobs);
+                setJobs(jobs);
             });
     },[]);
 
     useEffect(()=>{
-        let query="?jobs="+jobs.join(", ").toString();
-        alert(jobs.join(", ").toString());
+        let query="?filters="+filterLabels.join(",").toString();
         getJobs(query)
             .then(jobs=>{
-                setJobs(jobs.jobs);
+                setJobs(jobs);
             });
     },[filterLabels]);
 
@@ -37,8 +36,6 @@ function Home() {
         filterLabels.push(item);
         let addedFilterLabels=Array.from(new Set(filterLabels));
         setFilterLabels(addedFilterLabels);
-        // console.log('Added Filter Labels:');
-        // console.log(addedFilterLabels);
     };
     let clearFilter=()=>{
         setFilterLabels([]);
@@ -47,9 +44,12 @@ function Home() {
     return (
         <>
             <Header/>
-            <div className='relative px-5 w-full -mt-10'>
-                <Filters filterLabels={filterLabels} removeFilterItem={removeFilterItem} clearFilter={clearFilter}/>
-            </div>
+            {
+                filterLabels.length>0 &&
+                <div className='relative px-5 w-full -mt-10'>
+                    <Filters filterLabels={filterLabels} removeFilterItem={removeFilterItem} clearFilter={clearFilter}/>
+                </div>
+            }
             <div className="relative px-5 pt-12 w-full h-full">
                 {
                     jobs && jobs.map((job,index)=>
