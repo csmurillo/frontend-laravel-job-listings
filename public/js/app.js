@@ -5473,7 +5473,7 @@ function Card(_ref) {
   var job = _ref.job,
       addFilterItem = _ref.addFilterItem;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    className: "relative px-4 pt-7 pb-4 mb-8 bg-white rounded lg:flex lg:flex-row shadow-xl" + (job.featured ? ' border-0 border-l-4 border-desDarkCyan' : ''),
+    className: "relative px-4 pt-7 pb-4 mb-8 bg-white rounded lg:flex lg:flex-row shadow-xl " + (job.featured ? 'border-l-4 border-desDarkCyan' : ''),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       "class": "absolute left-5 -top-5 lg:relative lg:left-0 lg:top-0 lg:flex lg:justify-center lg:items-center lg:mr-5",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
@@ -5756,7 +5756,7 @@ function Home() {
         clearFilter: clearFilter
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-      className: "relative px-5 pt-12 w-full h-full",
+      className: "relative px-5 pt-12 pb-4 w-full h-full",
       children: jobs && jobs.map(function (job, index) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Card__WEBPACK_IMPORTED_MODULE_3__["default"], {
           id: index,

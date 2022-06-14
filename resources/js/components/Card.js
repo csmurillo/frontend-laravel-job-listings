@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 function Card({job,addFilterItem}) {
     
     return (
-       <div className={"relative px-4 pt-7 pb-4 mb-8 bg-white rounded lg:flex lg:flex-row shadow-xl" + (job.featured?' border-0 border-l-4 border-desDarkCyan':'')}>
+       <div className={"relative px-4 pt-7 pb-4 mb-8 bg-white rounded lg:flex lg:flex-row shadow-xl " + (job.featured?'border-l-4 border-desDarkCyan':'')}>
              <div class="absolute left-5 -top-5 lg:relative lg:left-0 lg:top-0 lg:flex lg:justify-center lg:items-center lg:mr-5">
                 <img class="w-10 h-10 lg:w-28 lg:h-28" src={job.logo}/>
             </div>

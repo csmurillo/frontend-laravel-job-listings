@@ -50,7 +50,7 @@ function Home() {
                     <Filters filterLabels={filterLabels} removeFilterItem={removeFilterItem} clearFilter={clearFilter}/>
                 </div>
             }
-            <div className="relative px-5 pt-12 w-full h-full">
+            <div className="relative px-5 pt-12 pb-4 w-full h-full">
                 {
                     jobs && jobs.map((job,index)=>
                         <Card id={index} job={job} addFilterItem={addFilterItem}></Card>

@@ -10888,6 +10888,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 .pt-4 {
   padding-top: 1rem;
 }
+.pb-5 {
+  padding-bottom: 1.25rem;
+}
+.pb-2 {
+  padding-bottom: 0.5rem;
+}
 .text-center {
   text-align: center;
 }
